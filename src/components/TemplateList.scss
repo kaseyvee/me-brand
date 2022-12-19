@@ -1,0 +1,6 @@
+@import '../variables.scss';
+
+.template-list-container {
+  @include flex-row;
+  justify-content: space-evenly;
+}

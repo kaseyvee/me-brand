@@ -1,0 +1,15 @@
+@import 'variables.scss';
+
+body {
+  background-color: $pink;
+  color: $black;
+  margin: 0;
+  font-family: 'Source Code Pro', monospace;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}

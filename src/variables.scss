@@ -1,0 +1,13 @@
+$pink: #FFB8E7;
+$white: #FFFFFF;
+$black: #393636;
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flex-row {
+  display: flex;
+  flex-direction: row;
+}

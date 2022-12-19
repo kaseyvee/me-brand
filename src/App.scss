@@ -1,0 +1,6 @@
+@import './variables.scss';
+
+.App {
+  @include flex-column;
+  text-align: center;
+}
