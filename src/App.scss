@@ -3,4 +3,20 @@
 .App {
   @include flex-column;
   text-align: center;
+  justify-content: space-between;
+  height: 100vh;
+
+  .Footer {
+    bottom: 0;
+    margin: 1rem;
+    
+    a {
+      color: $white;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
 }
