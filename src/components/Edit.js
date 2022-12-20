@@ -8,8 +8,9 @@ import Draggable from "react-draggable";
 
 function Edit() {
   // const { id } = useParams();
-  const [ previewToggle, setPreviewToggle ] = useState("banner")
-  const [ bounds, setBounds ] = useState("")
+  const [ previewToggle, setPreviewToggle ] = useState("banner");
+  const [ title, setTitle ] = useState("matthew hu");
+  const [ subtitle, setSubtitle ] = useState("software developer");
   const toggleClass = classNames("image",{
     "toggle-square": previewToggle === "square",
     "toggle-banner": previewToggle === "banner"
@@ -21,7 +22,7 @@ function Edit() {
     } else {
       setPreviewToggle("square");
     }
-  }
+  };
 
   return (
     <div className="Edit">
@@ -29,10 +30,14 @@ function Edit() {
         <Input 
           name="title"
           type="text"
+          onChange={(e) => setTitle(e.target.value)}
+          value={title}
         />
         <Input 
           name="subtitle"
           type="text"
+          onChange={(e) => setSubtitle(e.target.value)}
+          value={subtitle}
         />
         <div>
           <Input 
@@ -51,8 +56,8 @@ function Edit() {
             bounds="parent"
           >
             <div className="image-text">
-              <h1>matthew hu</h1>
-              <h2>software developer</h2>
+              <h1>{title}</h1>
+              <h2>{subtitle}</h2>
             </div>
           </Draggable>
         </div>

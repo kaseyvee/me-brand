@@ -12,6 +12,11 @@
 
     a {
       color: $white;
+      font-weight: bold;
+
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 }
