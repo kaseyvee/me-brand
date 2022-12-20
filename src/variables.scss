@@ -2,6 +2,8 @@ $pink: #FFB8E7;
 $white: #FFFFFF;
 $black: #393636;
 
+$primary-font: 'Source Code Pro', monospace;
+
 @mixin flex-column {
   display: flex;
   flex-direction: column;

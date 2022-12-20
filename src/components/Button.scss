@@ -1,0 +1,22 @@
+@import "../variables.scss";
+
+button {
+  background-color: $white;
+  color: $pink;
+  font-family: $primary-font;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 30px;
+  border: 2px solid $white;
+  padding: 1rem 2rem 1rem 2rem;
+  transition-duration: 200ms;
+
+  &:hover {
+    color: $white;
+    background-color: $pink;
+  }
+
+  &:active {
+    background-color: #ff95df;
+  }
+}
