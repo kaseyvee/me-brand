@@ -1,4 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { toPng } from 'html-to-image';
+import download from "downloadjs";
+
 // import { useParams } from "react-router-dom";
 import classNames from "classnames";
 import "./Edit.scss";
@@ -25,6 +28,15 @@ function Edit() {
     }
   };
 
+  const handleDownload = (event) => {
+    event.preventDefault();
+    toPng(document.getElementById('download-me'))
+      .then(function (dataUrl) {
+        download(dataUrl, 'i-got-branded.png');
+      }
+    );
+  }
+
   return (
     <div className="Edit">
       <form>
@@ -49,12 +61,13 @@ function Edit() {
             value={fontSize}
           />
           <Button
-            text="create"
+            text="download"
+            onClick={handleDownload}
           />
         </div>
       </form>
       <div className="preview">
-        <div className={toggleClass}>
+        <div className={toggleClass} id="download-me">
           <Draggable
             defaultPosition={{x: 20, y: 90}}
             bounds="parent"
