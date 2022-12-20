@@ -11,6 +11,7 @@ function Input(props) {
       onChange={props.onChange}
       value={props.value}
       autoComplete="off"
+      step={props.step}
     />
   );
 }

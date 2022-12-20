@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 // import { useParams } from "react-router-dom";
 import classNames from "classnames";
 import "./Edit.scss";
@@ -11,6 +11,7 @@ function Edit() {
   const [ previewToggle, setPreviewToggle ] = useState("banner");
   const [ title, setTitle ] = useState("matthew hu");
   const [ subtitle, setSubtitle ] = useState("software developer");
+  const [ fontSize, setFontSize ] = useState();
   const toggleClass = classNames("image",{
     "toggle-square": previewToggle === "square",
     "toggle-banner": previewToggle === "banner"
@@ -43,6 +44,9 @@ function Edit() {
           <Input 
             name="font size"
             type="number"
+            step={1}
+            onChange={(e) => setFontSize(e.target.value)}
+            value={fontSize}
           />
           <Button
             text="create"
@@ -56,8 +60,8 @@ function Edit() {
             bounds="parent"
           >
             <div className="image-text">
-              <h1>{title}</h1>
-              <h2>{subtitle}</h2>
+              <h1 style={{fontSize: `${26 + Number(fontSize)}px`}}>{title}</h1>
+              <h2 style={{fontSize: `${19 + Number(fontSize)}px`}}>{subtitle}</h2>
             </div>
           </Draggable>
         </div>
