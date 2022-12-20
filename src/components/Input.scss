@@ -1,0 +1,21 @@
+@import "../variables.scss";
+
+input {
+  @include font;
+  background-color: transparent;
+  color: $white;
+  border: 2px solid $white;
+  border-radius: 15px;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 1rem;
+  margin: 1rem;
+
+  &:focus {
+    outline: none;
+  }
+
+  &::placeholder {
+    color: $white;
+  }
+}

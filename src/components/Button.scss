@@ -1,14 +1,13 @@
 @import "../variables.scss";
 
 button {
+  @include font;
   background-color: $white;
   color: $pink;
-  font-family: $primary-font;
-  font-size: 1rem;
-  font-weight: bold;
   border-radius: 30px;
   border: 2px solid $white;
   padding: 1rem 2rem 1rem 2rem;
+  margin: 1rem;
   transition-duration: 200ms;
 
   &:hover {
