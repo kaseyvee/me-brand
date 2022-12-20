@@ -1,5 +1,3 @@
-import "./Header.scss";
-
 function Edit() {
 
   return (
