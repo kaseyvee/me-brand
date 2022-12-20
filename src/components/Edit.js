@@ -15,6 +15,7 @@ function Edit() {
   const [ title, setTitle ] = useState("matthew hu");
   const [ subtitle, setSubtitle ] = useState("software developer");
   const [ fontSize, setFontSize ] = useState();
+  
   const toggleClass = classNames("image",{
     "toggle-square": previewToggle === "square",
     "toggle-banner": previewToggle === "banner"
