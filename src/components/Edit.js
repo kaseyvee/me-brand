@@ -9,6 +9,7 @@ import Draggable from "react-draggable";
 function Edit() {
   // const { id } = useParams();
   const [ previewToggle, setPreviewToggle ] = useState("banner")
+  const [ bounds, setBounds ] = useState("")
   const toggleClass = classNames("image",{
     "toggle-square": previewToggle === "square",
     "toggle-banner": previewToggle === "banner"
@@ -46,7 +47,8 @@ function Edit() {
       <div className="preview">
         <div className={toggleClass}>
           <Draggable
-            defaultPosition={{x: 50, y: 80}}
+            defaultPosition={{x: 20, y: 90}}
+            bounds="parent"
           >
             <div className="image-text">
               <h1>matthew hu</h1>
