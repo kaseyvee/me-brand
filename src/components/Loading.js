@@ -1,4 +1,4 @@
-function Loading() {
+export default function Loading() {
 
   return (
     <div id="loading-rat">
@@ -6,5 +6,3 @@ function Loading() {
     </div>
   );
 }
-
-export default Loading;

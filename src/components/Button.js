@@ -1,6 +1,6 @@
 import "./Button.scss"
 
-function Button(props) {
+export default function Button(props) {
 
   return (
     <button
@@ -11,4 +11,3 @@ function Button(props) {
   );
 }
 
-export default Button;

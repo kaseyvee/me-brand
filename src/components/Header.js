@@ -1,7 +1,7 @@
 import "./Header.scss";
 import { Link } from "react-router-dom";
 
-function Header() {
+export default function Header() {
 
   return (
     <div className="Header">
@@ -12,5 +12,3 @@ function Header() {
       </div>
   );
 }
-
-export default Header;

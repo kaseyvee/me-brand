@@ -2,7 +2,7 @@ import './TemplateList.scss';
 import templates from '../database';
 import TemplateListItem from './TemplateListItem';
 
-function TemplateList() {
+export default function TemplateList() {
 
   const templateList = templates.map(template => {
     return (
@@ -23,5 +23,3 @@ function TemplateList() {
     </div>
   );
 }
-
-export default TemplateList;

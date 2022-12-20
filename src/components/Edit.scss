@@ -3,37 +3,57 @@
 .Edit {
   @include flex-row;
   justify-content: space-evenly;
+  align-items: center;
 
   form {
     @include flex-column;
+
+    .edit-buttons {
+      @include flex-row;
+      justify-content: space-between;
+    }
   }
 
   .preview {
 
-    .image {
-      position: relative;
+    .nameless {
       background-color: #FBE900;
-      margin: 1rem;
+      color: black;
       font-family: Arial, Helvetica, sans-serif;
       text-align: left;
 
+      h1 {
+        font-size: 26px;
+        margin: 0;
+      }
+      
+      h2 {
+        font-size: 19px;
+        margin: 0;
+      }
+    }
+
+    .chocky {
+      background-color: #E30002;
+      color: $white;
+      font-family: 'Fjalla One', sans-serif;
+    }
+    
+    .soobway {
+      background-color: black;
+      color: $white;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .image {
+      position: relative;
+      
       .image-text {
         cursor: grab;
-        color: black;
         width: fit-content;
 
         &:active {
           cursor: grabbing;
-        }
-
-        h1 {
-          font-size: 1.5rem;
-          margin: 0;
-        }
-        
-        h2 {
-          font-size: 1.1rem;
-          margin: 0;
         }
       }
     }

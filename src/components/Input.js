@@ -1,6 +1,6 @@
 import "./Input.scss"
 
-function Input(props) {
+export default function Input(props) {
 
   return (
     <input
@@ -15,5 +15,3 @@ function Input(props) {
     />
   );
 }
-
-export default Input;

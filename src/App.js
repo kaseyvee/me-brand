@@ -9,7 +9,7 @@ import Edit from './components/Edit';
 import Footer from './components/Footer';
 import Loading from './components/Loading';
 
-function App() {
+export default function App() {
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
@@ -35,5 +35,3 @@ function App() {
     </BrowserRouter>
   );
 }
-
-export default App;

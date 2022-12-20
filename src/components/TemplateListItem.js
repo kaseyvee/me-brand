@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-function TemplateListItem(props) {
+export default function TemplateListItem(props) {
 
   return (
     <Link to={`/${props.name}`}>
@@ -11,5 +11,3 @@ function TemplateListItem(props) {
     </Link>
   );
 }
-
-export default TemplateListItem;
