@@ -12,13 +12,13 @@
 
     a {
       color: $white;
-      text-decoration: none;
-
-      &:hover {
-        text-decoration: underline;
-      }
     }
   }
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
 #loading-rat {

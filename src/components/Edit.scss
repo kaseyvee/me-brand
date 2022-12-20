@@ -2,8 +2,7 @@
 
 .Edit {
   @include flex-row;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: space-evenly;
 
   form {
     @include flex-column;
@@ -13,9 +12,26 @@
 
     .image {
       background-color: #FBE900;
+      margin: 1rem;
+
+      .image-text {
+        h1 {
+          margin: 0;
+        }
+        h2 {
+          margin: 0;
+        }
+      }
+    }
+
+    .toggle-square {
       height: 227px;
       width: 221px;
-      margin: 1rem;
+    }
+
+    .toggle-banner {
+      height: 227px;
+      width: 907px;
     }
   }
 }

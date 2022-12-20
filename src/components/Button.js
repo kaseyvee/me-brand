@@ -3,7 +3,9 @@ import "./Button.scss"
 function Button(props) {
 
   return (
-    <button>
+    <button
+      onClick={props.onClick}
+    >
       {props.text}
     </button>
   );

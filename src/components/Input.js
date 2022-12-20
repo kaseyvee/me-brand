@@ -8,8 +8,7 @@ function Input(props) {
       name={props.name}
       type={props.type}
       placeholder={props.name}
-      value={props.value}
-      onChange={props.onChange}
+      defaultValue=""
       autoComplete="off"
     />
   );
