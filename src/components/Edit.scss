@@ -13,8 +13,17 @@
     .image {
       background-color: #FBE900;
       margin: 1rem;
+      font-family: Arial, Helvetica, sans-serif;
+      text-align: left;
 
       .image-text {
+        cursor: grab;
+        width: fit-content;
+
+        &:active {
+          cursor: grabbing;
+        }
+
         h1 {
           margin: 0;
         }

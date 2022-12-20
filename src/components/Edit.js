@@ -4,6 +4,7 @@ import classNames from "classnames";
 import "./Edit.scss";
 import Button from "./Button";
 import Input from "./Input";
+import Draggable from "react-draggable";
 
 function Edit() {
   // const { id } = useParams();
@@ -44,10 +45,14 @@ function Edit() {
       </form>
       <div className="preview">
         <div className={toggleClass}>
-          <div className="image-text">
-            <h1>matthew hu</h1>
-            <h2>software developer</h2>
-          </div>
+          <Draggable
+            defaultPosition={{x: 50, y: 80}}
+          >
+            <div className="image-text">
+              <h1>matthew hu</h1>
+              <h2>software developer</h2>
+            </div>
+          </Draggable>
         </div>
         <Button
           text={`toggle ${previewToggle}`}
