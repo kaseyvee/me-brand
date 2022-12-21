@@ -21,9 +21,10 @@ export default function Edit() {
   const [ previewToggle, setPreviewToggle ] = useState("banner");
   const [ title, setTitle ] = useState(getTemplateAttr(currentTemplate, "title"));
   const [ subtitle, setSubtitle ] = useState(getTemplateAttr(currentTemplate, "subtitle"));
-  const [ fontAdjust, setFontAdjust ] = useState();
+  const [ fontAdjust, setFontAdjust ] = useState(null);
   const [ curveAdjust, setCurveAdjust ] = useState(null);
   const [ xPosition, setXPosition ] = useState(null);
+  const [ yPosition, setYPosition ] = useState(null);
   
   const toggleClass = classNames("image",{
     "toggle-square": previewToggle === "square",
@@ -51,12 +52,8 @@ export default function Edit() {
     );
   }
 
-  function handleNumberInput(e) {
-    if (id === "chocky") {
-      setCurveAdjust(e.target.value);
-    } else {
-      setFontAdjust(e.target.value);
-    }
+  function reset() {
+
   }
 
   return (
@@ -75,18 +72,34 @@ export default function Edit() {
           value={subtitle}
         />
         <Input 
-          name={(id === "nameless" && "font size") || "curve offset"}
+          name="font size"
           type="number"
-          onChange={e => handleNumberInput(e)}
-          value={fontAdjust || curveAdjust}
+          onChange={e => setFontAdjust(e.target.value)}
+          value={fontAdjust}
         />
         {id === "chocky" &&
-          <Input 
-            name="x-position"
-            type="number"
-            onChange={e => setXPosition(e.target.value)}
-            value={xPosition}
-          />
+          <>
+            <div>
+              <Input 
+                name="title x-position"
+                type="number"
+                onChange={e => setXPosition(e.target.value)}
+                value={xPosition}
+              />
+              <Input 
+                name="title y-position"
+                type="number"
+                onChange={e => setYPosition(e.target.value)}
+                value={yPosition}
+              />
+            </div>
+            <Input 
+              name="curve offset"
+              type="number"
+              onChange={e => setCurveAdjust(e.target.value)}
+              value={curveAdjust}
+            />
+          </>
         }
         <div className="edit-buttons">
           <Button
@@ -101,38 +114,50 @@ export default function Edit() {
       </form>
       <div className="preview">
         <div className={toggleClass} id="download-me">
-          {id === "nameless" && <Draggable
-            defaultPosition={{x: 20, y: 90}}
-            bounds="parent"
-          >
-            <div className="drag-me">
-              <h1 style={{fontSize: `${26 + Number(fontAdjust)}px`}}>{title}</h1>
-              <h2 style={{fontSize: `${19 + Number(fontAdjust)}px`}}>{subtitle}</h2>
-            </div>
-          </Draggable>}
-          {id === "chocky" && <Draggable
-            defaultPosition={{x: 20, y: 10}}
-            bounds="parent"
-          >
-            <div className="drag-me chocky-text">
-              <ChockyTitle
-                title={title}
-                fontAdjust={fontAdjust}
-                curveAdjust={curveAdjust}
-                xPosition={xPosition}
-              />
-              <h2 style={{fontSize: `${10 + Number(fontAdjust)}px`}}>{subtitle}</h2>
-            </div>
-          </Draggable>}
-          {id === "soobway" && <Draggable
-            defaultPosition={{x: 20, y: 90}}
-            bounds="parent"
-          >
-            <div className="drag-me">
-              <h1 style={{fontSize: `${26 + Number(fontAdjust)}px`}}>{title}</h1>
-              <h2 style={{fontSize: `${19 + Number(fontAdjust)}px`}}>{subtitle}</h2>
-            </div>
-          </Draggable>}
+          {id === "nameless" &&
+            <Draggable
+              defaultPosition={{x: 20, y: 90}}
+              bounds="parent"
+            >
+              <div className="drag-me">
+                <h1 style={{fontSize: `${26 + Number(fontAdjust)}px`}}>{title}</h1>
+                <h2 style={{fontSize: `${19 + Number(fontAdjust)}px`}}>{subtitle}</h2>
+              </div>
+            </Draggable>
+          }
+          {id === "chocky" &&
+            <Draggable
+              defaultPosition={{x: 0, y: 10}}
+              bounds="parent"
+            >
+              <div className="drag-me chocky-text">
+                <ChockyTitle
+                  title={title}
+                  fontAdjust={fontAdjust}
+                  curveAdjust={curveAdjust}
+                />
+                <Draggable
+                  defaultPosition={{x: 0, y: -25}}
+                  bounds="parent" 
+                  axis="y"
+                >
+                  <h2 style={{fontSize: `${10 + Number(fontAdjust)}px`}}>{subtitle}</h2>
+                </Draggable>
+              </div>
+            </Draggable>
+
+          }
+          {id === "soobway" &&
+            <Draggable
+              defaultPosition={{x: 20, y: 90}}
+              bounds="parent"
+            >
+              <div className="drag-me">
+                <h1 style={{fontSize: `${26 + Number(fontAdjust)}px`}}>{title}</h1>
+                <h2 style={{fontSize: `${19 + Number(fontAdjust)}px`}}>{subtitle}</h2>
+              </div>
+            </Draggable>
+          }
         </div>
       </div>
     </div>
