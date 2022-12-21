@@ -37,6 +37,28 @@
       background-color: #E30002;
       color: $white;
       font-family: 'Fjalla One', sans-serif;
+
+      .chocky-text {
+        @include flex-column;
+        justify-content: center;
+        align-items: center;
+        background-image: url("../../public/Sticks.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 210px;
+
+        text {
+          font-size: 40px;
+          font-weight: bold;
+        }
+
+        h2 {
+          font-size: 10px;
+          width: 50px;
+          text-align: center;
+          margin: 0;
+        }
+      }
     }
     
     .soobway {
@@ -48,7 +70,7 @@
     .image {
       position: relative;
       
-      .image-text {
+      .drag-me {
         cursor: grab;
         width: fit-content;
 
