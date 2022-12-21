@@ -8,6 +8,10 @@
   form {
     @include flex-column;
 
+    .circle-picker {
+      align-self: center;
+    }
+
     input {
       @include font;
       background-color: transparent;
@@ -28,10 +32,10 @@
       }
     }
 
-    .edit-buttons {
-      @include flex-row;
-      justify-content: space-between;
-    }
+    // .edit-buttons {
+    //   @include flex-row;
+    //   justify-content: space-between;
+    // }
   }
 
   .Preview {
@@ -111,7 +115,7 @@
 
     .toggle-square {
       height: 227px;
-      width: 221px;
+      width: 227px;
     }
 
     .toggle-banner {

@@ -57,6 +57,7 @@ export default function Edit() {
   return (
     <div className="Edit">
       <Form {...{
+        id,
         title, setTitle,
         subtitle, setSubtitle,
         fontAdjust, setFontAdjust,

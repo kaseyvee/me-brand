@@ -20,7 +20,7 @@ export default function Preview(props) {
         }
         {props.id === "chocky" &&
           <Draggable
-            defaultPosition={{x: 10, y: 10}}
+            defaultPosition={{x: 12, y: 10}}
             bounds="parent"
           >
             <div className="drag-me chocky-text">
@@ -47,8 +47,8 @@ export default function Preview(props) {
             bounds="parent"
           >
             <div className="drag-me">
-              <h1 className="title" style={{fontSize: `${26 + Number(props.fontAdjust)}px`}}>{props.title}</h1>
-              <h1 style={{fontSize: `${26 + Number(props.fontAdjust)}px`}}>{props.subtitle}</h1>
+              <h1 className="title" style={{fontSize: `${20 + Number(props.fontAdjust)}px`}}>{props.title}</h1>
+              <h1 style={{fontSize: `${20 + Number(props.fontAdjust)}px`}}>{props.subtitle}</h1>
             </div>
           </Draggable>
         }

@@ -13,6 +13,7 @@ Users can customize text, font size, position with drag and drop, and toggle bet
 ## To-Do
 - **chocky** download is buggy- if you want to use this banner, zoom in to your desired size and screenshot
 - **soobway** does not have icons and lil blurb implemented yet
+- bug when downloading while viewing on another monitor- image size is smaller
 
 ## View WIP
 1. Install dependencies: `npm i`
