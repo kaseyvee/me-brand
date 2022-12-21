@@ -5,11 +5,17 @@ import { useState } from "react";
 
 export default function Form(props) {
   const [ customizeIcon, setCustomizeIcon ] = useState("new icon");
-
-  function HandleToggleCustomizeIcon(e) {
+  const [ circleColour, setCircleColour ] = useState("#FFFFFF");
+  
+  function handleToggleCustomizeIcon(e) {
     e.preventDefault()
     customizeIcon === "new icon" ? setCustomizeIcon("back") : setCustomizeIcon("new icon");
   }
+
+  function handleColourChange(colour) {
+    setCircleColour(colour.hex);
+  }
+
 
   return (
     <form>
@@ -60,9 +66,13 @@ export default function Form(props) {
           </>
         }
         {(props.id === "soobway" && customizeIcon === "back") &&
-          <CirclePicker
-            colors={["#EF3B46", "#874E17", "#A77D35", "#F78427", "#FCB818", "#1BB359", "#1379C1", "#04ADDA", "#D75BA1", "#3E3F41", "#9C9D9F", "#000000"]}
-          />
+          <>
+            <div className="circle-preview" style={{backgroundColor: `${circleColour}`}}></div>
+            <CirclePicker
+              colors={["#EF3B46", "#874E17", "#A77D35", "#F78427", "#FCB818", "#1BB359", "#1379C1", "#04ADDA", "#D75BA1", "#3E3F41", "#9C9D9F", "#000000"]}
+              onChange={handleColourChange}
+            />
+          </>
         }
         <div>
           {customizeIcon === "new icon" && <div>
@@ -79,7 +89,7 @@ export default function Form(props) {
             {props.id === "soobway" &&
               <Button 
                 text={customizeIcon}
-                onClick={HandleToggleCustomizeIcon}
+                onClick={handleToggleCustomizeIcon}
               />
             }
             {(props.id === "soobway" && customizeIcon === "back") &&
