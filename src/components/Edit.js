@@ -53,7 +53,10 @@ export default function Edit() {
   }
 
   function reset() {
-
+    setFontAdjust("");
+    setCurveAdjust("");
+    setXPosition("");
+    setYPosition("");
   }
 
   return (
@@ -127,7 +130,7 @@ export default function Edit() {
           }
           {id === "chocky" &&
             <Draggable
-              defaultPosition={{x: 0, y: 10}}
+              defaultPosition={{x: 10, y: 10}}
               bounds="parent"
             >
               <div className="drag-me chocky-text">
@@ -135,7 +138,9 @@ export default function Edit() {
                   title={title}
                   fontAdjust={fontAdjust}
                   curveAdjust={curveAdjust}
-                />
+                  xPosition={xPosition}
+                  yPosition={yPosition}
+                  />
                 <Draggable
                   defaultPosition={{x: 0, y: -25}}
                   bounds="parent" 
@@ -149,16 +154,20 @@ export default function Edit() {
           }
           {id === "soobway" &&
             <Draggable
-              defaultPosition={{x: 20, y: 90}}
+              defaultPosition={{x: 6, y: 19}}
               bounds="parent"
             >
               <div className="drag-me">
-                <h1 style={{fontSize: `${26 + Number(fontAdjust)}px`}}>{title}</h1>
-                <h2 style={{fontSize: `${19 + Number(fontAdjust)}px`}}>{subtitle}</h2>
+                <h1 className="title" style={{fontSize: `${26 + Number(fontAdjust)}px`}}>{title}</h1>
+                <h1 style={{fontSize: `${26 + Number(fontAdjust)}px`}}>{subtitle}</h1>
               </div>
             </Draggable>
           }
         </div>
+        <Button
+          text="reset"
+          onClick={reset}
+        />
       </div>
     </div>
   );

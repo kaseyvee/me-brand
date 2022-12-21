@@ -5,8 +5,8 @@ export default function ChockyTitle(props) {
       <ReactCurvedText
         width={200}
         height={100}
-        cx={105}
-        cy={160}
+        cx={105 + Number(props.xPosition)}
+        cy={160 + Number(props.yPosition)}
         rx={100}
         ry={100}
         startOffset={110 + Number(props.curveAdjust)}
