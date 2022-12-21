@@ -18,7 +18,7 @@ export default function Edit() {
   const { id } = useParams();
   const currentTemplate = getTemplate(templates, id);
 
-  const [ previewToggle, setPreviewToggle ] = useState("banner");
+  const [ previewToggle, setPreviewToggle ] = useState("square");
   const [ title, setTitle ] = useState(getTemplateAttr(currentTemplate, "title"));
   const [ subtitle, setSubtitle ] = useState(getTemplateAttr(currentTemplate, "subtitle"));
   const [ fontAdjust, setFontAdjust ] = useState(null);
@@ -27,8 +27,8 @@ export default function Edit() {
   const [ yPosition, setYPosition ] = useState(null);
   
   const toggleClass = classNames("image",{
-    "toggle-square": previewToggle === "square",
-    "toggle-banner": previewToggle === "banner",
+    "toggle-square": previewToggle === "banner",
+    "toggle-banner": previewToggle === "square",
     "nameless": id === "nameless",
     "chocky": id === "chocky",
     "soobway": id === "soobway"
@@ -106,7 +106,7 @@ export default function Edit() {
         }
         <div className="edit-buttons">
           <Button
-            text={`toggle ${previewToggle}`}
+            text={`toggle to ${previewToggle}`}
             onClick={handlePreviewToggle}
           />
           <Button
