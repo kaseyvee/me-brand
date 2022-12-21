@@ -1,76 +1,112 @@
 import { CirclePicker } from "react-color";
-import Input from "./Input";
 import Button from "../Button";
 import { useState } from "react";
 
 export default function Form(props) {
   const [ customizeIcon, setCustomizeIcon ] = useState("new icon");
-  const [ circleColour, setCircleColour ] = useState("#FFFFFF");
+  const [ circleColour, setCircleColour ] = useState("#FCB818");
+  const [ circleIcon, setCircleIcon ] = useState(null);
+  const [ iconInvert, setIconInvert ] = useState(1);
   
   function handleToggleCustomizeIcon(e) {
-    e.preventDefault()
+    e.preventDefault();
     customizeIcon === "new icon" ? setCustomizeIcon("back") : setCustomizeIcon("new icon");
   }
 
-  function handleColourChange(colour) {
-    setCircleColour(colour.hex);
+  function handleInvertIcon(e) {
+    e.preventDefault();
+    if (iconInvert === 1) {
+      setIconInvert(0);
+    } else {
+      setIconInvert(1);
+    }
   }
-
 
   return (
     <form>
         {customizeIcon === "new icon" && 
         <>
-          <Input 
-            name="title"
+          <input 
             type="text"
             onChange={e => props.setTitle(e.target.value)}
             value={props.title}
+            placeholder="title"
+            autoComplete="off"
           />
-          <Input 
-            name="subtitle"
+          <input 
             type="text"
             onChange={e => props.setSubtitle(e.target.value)}
             value={props.subtitle}
+            placeholder="subtitle"
+            autoComplete="off"
           />
-          <Input 
-            name="font size"
+          <input 
             type="number"
             onChange={e => props.setFontAdjust(e.target.value)}
             value={props.fontAdjust}
+            placeholder="font size"
+            autoComplete="off"
           />
         </>
         }
         {props.id === "chocky" &&
           <>
             <div>
-              <Input 
-                name="title x-position"
+              <input 
                 type="number"
                 onChange={e => props.setXPosition(e.target.value)}
                 value={props.xPosition}
+                placeholder="title x-position"
+                autoComplete="off"
               />
-              <Input 
-                name="title y-position"
+              <input 
                 type="number"
                 onChange={e => props.setYPosition(e.target.value)}
                 value={props.yPosition}
+                placeholder="title y-position"
+                autoComplete="off"
               />
             </div>
-            <Input 
-              name="curve offset"
+            <input 
               type="number"
               onChange={e => props.setCurveAdjust(e.target.value)}
               value={props.curveAdjust}
+              placeholder="curve offset"
+              autoComplete="off"
             />
           </>
         }
         {(props.id === "soobway" && customizeIcon === "back") &&
           <>
-            <div className="circle-preview" style={{backgroundColor: `${circleColour}`}}></div>
+            <Button text="invert icon colour" onClick={handleInvertIcon}/>
+            <div className="circle-upload">
+              <div
+                className="circle-preview"
+                style={{backgroundColor: `${circleColour}`}}
+              >
+                <img
+                  src={circleIcon}
+                  alt=""
+                  style={{filter: `invert(${iconInvert})`}}
+                />
+              </div>
+              <label>
+                <input
+                  className="upload-icon"
+                  type="file"
+                  onChange={(e) => {
+                    if (e.target.files.length !== 0) {
+                      e.preventDefault();
+                      setCircleIcon(URL.createObjectURL(e.target.files[0]));
+                    }
+                  }}
+                />
+                upload icon
+              </label>
+            </div>
             <CirclePicker
-              colors={["#EF3B46", "#874E17", "#A77D35", "#F78427", "#FCB818", "#1BB359", "#1379C1", "#04ADDA", "#D75BA1", "#3E3F41", "#9C9D9F", "#000000"]}
-              onChange={handleColourChange}
+              colors={["#EF3B46", "#A77D35", "#F78427", "#FCB818", "#9FC438", "#1BB359", "#1379C1", "#04ADDA", "#D75BA1", "#9C9D9F", "#3E3F41", "#FFFFFF"]}
+              onChange={colour => setCircleColour(colour.hex)}
             />
           </>
         }

@@ -8,16 +8,29 @@
   form {
     @include flex-column;
 
-    .circle-preview {
-      background-color: white;
-      width: 50px;
-      height: 50px;
-      object-fit: cover;
-      border-radius: 50%;
+    .circle-upload {
+      @include flex-row;
+      justify-content: center;
+      align-items: center;
+
+      .circle-preview {
+        @include flex-row;
+        justify-content: center;
+        align-items: center;
+        width: 56px;
+        height: 56px;
+        object-fit: cover;
+        border-radius: 50%;
+
+        img {
+          width: 60%;
+        }
+      }
     }
 
     .circle-picker {
       align-self: center;
+      margin: 1rem !important;
     }
 
     input {
@@ -38,6 +51,10 @@
       &::placeholder {
         color: $white;
       }
+    }
+
+    input[type=file] {
+      display: none;
     }
 
     // .edit-buttons {

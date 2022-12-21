@@ -1,6 +1,6 @@
 @import "../variables.scss";
 
-button {
+button, label {
   @include font;
   background-color: $white;
   color: $pink;
