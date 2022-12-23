@@ -10,6 +10,9 @@ export default function Form(props) {
   const [ circleColour, setCircleColour ] = useState("#FCB818");
   const [ circleIcon, setCircleIcon ] = useState(null);
   const [ iconInvert, setIconInvert ] = useState(1);
+
+  const state = props.state;
+  const setState = props.setState;
   
   function handleToggleCustomizeIcon(e) {
     e.preventDefault();
@@ -27,10 +30,10 @@ export default function Form(props) {
 
   function handlePreviewToggle(e) {
     e.preventDefault();
-    if (props.previewToggle === "square") {
-      props.setPreviewToggle("banner");
+    if (state.previewToggle === "square") {
+      setState(prev => ({ ...prev, previewToggle: "banner"}))
     } else {
-      props.setPreviewToggle("square");
+      setState(prev => ({ ...prev, previewToggle: "square"}))
     }
   }
 
@@ -49,22 +52,22 @@ export default function Form(props) {
         <>
           <input 
             type="text"
-            onChange={e => props.setTitle(e.target.value)}
-            value={props.title}
+            onChange={e => setState(prev => ({ ...prev, title: e.target.value}))}
+            value={state.title}
             placeholder="title"
             autoComplete="off"
           />
           <input 
             type="text"
-            onChange={e => props.setSubtitle(e.target.value)}
-            value={props.subtitle}
+            onChange={e => setState(prev => ({ ...prev, subtitle: e.target.value}))}
+            value={state.subtitle}
             placeholder="subtitle"
             autoComplete="off"
           />
           <input 
             type="number"
-            onChange={e => props.setFontAdjust(e.target.value)}
-            value={props.fontAdjust}
+            onChange={e => setState(prev => ({ ...prev, fontAdjust: e.target.value}))}
+            value={state.fontAdjust}
             placeholder="font size"
             autoComplete="off"
           />
@@ -75,23 +78,23 @@ export default function Form(props) {
             <div>
               <input 
                 type="number"
-                onChange={e => props.setXPosition(e.target.value)}
-                value={props.xPosition}
+                onChange={e => setState(prev => ({ ...prev, xPosition: e.target.value}))}
+                value={state.xPosition}
                 placeholder="title x-position"
                 autoComplete="off"
               />
               <input 
                 type="number"
-                onChange={e => props.setYPosition(e.target.value)}
-                value={props.yPosition}
+                onChange={e => setState(prev => ({ ...prev, yPosition: e.target.value}))}
+                value={state.yPosition}
                 placeholder="title y-position"
                 autoComplete="off"
               />
             </div>
             <input 
               type="number"
-              onChange={e => props.setCurveAdjust(e.target.value)}
-              value={props.curveAdjust}
+              onChange={e => setState(prev => ({ ...prev, curveAdjust: e.target.value}))}
+              value={state.curveAdjust}
               placeholder="curve offset"
               autoComplete="off"
             />
@@ -134,7 +137,7 @@ export default function Form(props) {
         <div>
           {customizeIcon === "new icon" && <div>
             <Button
-              text={`toggle to ${props.previewToggle}`}
+              text={`toggle to ${state.previewToggle}`}
               onClick={handlePreviewToggle}
             />
             <Button

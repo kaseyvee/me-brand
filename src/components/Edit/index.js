@@ -14,48 +14,31 @@ export default function Edit() {
   const { id } = useParams();
   const currentTemplate = getTemplate(templates, id);
 
-  const [ previewToggle, setPreviewToggle ] = useState("square");
-  const [ title, setTitle ] = useState(getTemplateAttr(currentTemplate, "title"));
-  const [ subtitle, setSubtitle ] = useState(getTemplateAttr(currentTemplate, "subtitle"));
-  const [ fontAdjust, setFontAdjust ] = useState("");
-  const [ curveAdjust, setCurveAdjust ] = useState("");
-  const [ xPosition, setXPosition ] = useState("");
-  const [ yPosition, setYPosition ] = useState("");
+  const [ state, setState ] = useState({
+    previewToggle: "square",
+    title: getTemplateAttr(currentTemplate, "title"),
+    subtitle: getTemplateAttr(currentTemplate, "subtitle"),
+    fontAdjust: "",
+    curveAdjust: "",
+    xPosition: "",
+    yPosition: ""
+  })
   
   const toggleClass = classNames("image", `${id}`, {
-    "toggle-square": previewToggle === "banner",
-    "toggle-banner": previewToggle === "square"
+    "toggle-square": state.previewToggle === "banner",
+    "toggle-banner": state.previewToggle === "square"
   });
-
-  function reset() {
-    setFontAdjust("");
-    setCurveAdjust("");
-    setXPosition("");
-    setYPosition("");
-  }
 
   return (
     <div className="Edit">
       <Form {...{
         id,
-        title, setTitle,
-        subtitle, setSubtitle,
-        fontAdjust, setFontAdjust,
-        curveAdjust, setCurveAdjust,
-        xPosition, setXPosition,
-        yPosition, setYPosition,
-        previewToggle, setPreviewToggle
+        state, setState
       }}/>
       <Preview {...{
         id,
         toggleClass,
-        title,
-        subtitle,
-        fontAdjust,
-        curveAdjust,
-        xPosition,
-        yPosition,
-        reset
+        state, setState
       }}/>
     </div>
   );
