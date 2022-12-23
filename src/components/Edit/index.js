@@ -1,7 +1,5 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import { toPng } from 'html-to-image';
-import download from "downloadjs";
 import classNames from "classnames";
 
 import "./Edit.scss";
@@ -29,24 +27,6 @@ export default function Edit() {
     "toggle-banner": previewToggle === "square"
   });
 
-  function handlePreviewToggle(e) {
-    e.preventDefault();
-    if (previewToggle === "square") {
-      setPreviewToggle("banner");
-    } else {
-      setPreviewToggle("square");
-    }
-  }
-
-  function handleDownload(e) {
-    e.preventDefault();
-    toPng(document.getElementById('download-me'))
-      .then(function (dataUrl) {
-        download(dataUrl, 'i-got-branded.png');
-      }
-    );
-  }
-
   function reset() {
     setFontAdjust("");
     setCurveAdjust("");
@@ -64,8 +44,7 @@ export default function Edit() {
         curveAdjust, setCurveAdjust,
         xPosition, setXPosition,
         yPosition, setYPosition,
-        previewToggle, handlePreviewToggle,
-        handleDownload
+        previewToggle, setPreviewToggle
       }}/>
       <Preview {...{
         id,

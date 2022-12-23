@@ -1,6 +1,9 @@
-import { CirclePicker } from "react-color";
-import Button from "../Button";
 import { useState } from "react";
+import { CirclePicker } from "react-color";
+import { toPng } from 'html-to-image';
+import download from "downloadjs";
+
+import Button from "../Button";
 
 export default function Form(props) {
   const [ customizeIcon, setCustomizeIcon ] = useState("new icon");
@@ -20,6 +23,24 @@ export default function Form(props) {
     } else {
       setIconInvert(1);
     }
+  }
+
+  function handlePreviewToggle(e) {
+    e.preventDefault();
+    if (props.previewToggle === "square") {
+      props.setPreviewToggle("banner");
+    } else {
+      props.setPreviewToggle("square");
+    }
+  }
+
+  function handleDownload(e) {
+    e.preventDefault();
+    toPng(document.getElementById('download-me'))
+      .then(function (dataUrl) {
+        download(dataUrl, 'i-got-branded.png');
+      }
+    );
   }
 
   return (
@@ -114,11 +135,11 @@ export default function Form(props) {
           {customizeIcon === "new icon" && <div>
             <Button
               text={`toggle to ${props.previewToggle}`}
-              onClick={props.handlePreviewToggle}
+              onClick={handlePreviewToggle}
             />
             <Button
               text="download"
-              onClick={props.handleDownload}
+              onClick={handleDownload}
             />
           </div>}
           <div>
