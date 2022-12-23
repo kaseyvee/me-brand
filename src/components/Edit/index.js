@@ -21,7 +21,8 @@ export default function Edit() {
     fontAdjust: "",
     curveAdjust: "",
     xPosition: "",
-    yPosition: ""
+    yPosition: "",
+    soobwayCircles: [{iconInvert: 1, circleColour: "#F78427", customizeIcon: "https://i.imgur.com/I1day1B.png"}, {iconInvert: 1, circleColour: "#1BB359", customizeIcon: "https://i.imgur.com/7P1zUza.png"}]
   })
   
   const toggleClass = classNames("image", `${id}`, {

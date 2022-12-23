@@ -2,8 +2,19 @@ import NamelessDraggable from "./Draggables/NamelessDraggable";
 import ChockyDraggable from "./Draggables/ChockyDraggable";
 import SoobwayDraggable from "./Draggables/SoobwayDraggable";
 import Button from "../Button";
+import SoobwayCircleItem from "./SoobwayCircleItem";
 
 export default function Preview(props) {
+
+  const circles = props.state.soobwayCircles.map(soobwayCircle => {
+    return (
+      <SoobwayCircleItem
+        circleColour={soobwayCircle.circleColour}
+        circleIcon={soobwayCircle.circleIcon}
+        iconInvert={soobwayCircle.iconInvert}
+      />
+    )
+  })
 
   function reset() {
     props.setState(prev => ({ ...prev, fontAdjust: "", curveAdjust: "", xPosition: "", yPosition: ""}));
@@ -30,11 +41,14 @@ export default function Preview(props) {
           />
         }
         {props.id === "soobway" &&
+        <>
           <SoobwayDraggable
             fontAdjust={props.state.fontAdjust}
             title={props.state.title}
             subtitle={props.state.subtitle}
           />
+          {circles}
+        </>
         }
       </div>
       <Button

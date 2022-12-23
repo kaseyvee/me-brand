@@ -4,6 +4,7 @@ import { toPng } from 'html-to-image';
 import download from "downloadjs";
 
 import Button from "../Button";
+import SoobwayCircleItem from "./SoobwayCircleItem";
 
 export default function Form(props) {
   const [ customizeIcon, setCustomizeIcon ] = useState("new icon");
@@ -104,16 +105,11 @@ export default function Form(props) {
           <>
             <Button text="invert icon colour" onClick={handleInvertIcon}/>
             <div className="circle-upload">
-              <div
-                className="circle-preview"
-                style={{backgroundColor: `${circleColour}`}}
-              >
-                <img
-                  src={circleIcon}
-                  alt=""
-                  style={{filter: `invert(${iconInvert})`}}
-                />
-              </div>
+              <SoobwayCircleItem
+                circleColour={circleColour}
+                circleIcon={circleIcon}
+                iconInvert={iconInvert}
+              />
               <label>
                 <input
                   className="upload-icon"
