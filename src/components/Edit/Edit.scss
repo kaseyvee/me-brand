@@ -110,13 +110,27 @@
     }
     
     .soobway {
+      @include flex-row;
       background-color: black;
       color: $white;
       font-family: Arial, Helvetica, sans-serif;
       text-align: left;
       background-image: url("../../../public/BG.svg");
 
+      .circle-item {
+        width: 25px;
+        height: 25px;
+
+        img {
+          pointer-events: none;
+        }
+      }
+
       h1 {
+        margin: 0;
+      }
+
+      h2 {
         margin: 0;
       }
 
@@ -126,15 +140,16 @@
     }
 
     .image {
-      position: relative;
-      
-      .drag-me {
-        cursor: grab;
-        width: fit-content;
+      position: relative; 
+    }
+    
+    .drag-me {
+      cursor: grab;
+      width: fit-content;
+      height: fit-content;
 
-        &:active {
-          cursor: grabbing;
-        }
+      &:active {
+        cursor: grabbing;
       }
     }
 

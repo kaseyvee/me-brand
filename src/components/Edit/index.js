@@ -18,11 +18,10 @@ export default function Edit() {
     previewToggle: "square",
     title: getTemplateAttr(currentTemplate, "title"),
     subtitle: getTemplateAttr(currentTemplate, "subtitle"),
+    blurb: getTemplateAttr(currentTemplate, "blurb"),
     fontAdjust: "",
     curveAdjust: "",
-    xPosition: "",
-    yPosition: "",
-    soobwayCircles: [{iconInvert: 1, circleColour: "#F78427", customizeIcon: "https://i.imgur.com/I1day1B.png"}, {iconInvert: 1, circleColour: "#1BB359", customizeIcon: "https://i.imgur.com/7P1zUza.png"}]
+    soobwayCircles: [{iconInvert: 1, circleColour: "#F78427", circleIcon: "https://i.imgur.com/I1day1B.png"}, {iconInvert: 1, circleColour: "#1BB359", circleIcon: "https://i.imgur.com/7P1zUza.png"}]
   })
   
   const toggleClass = classNames("image", `${id}`, {

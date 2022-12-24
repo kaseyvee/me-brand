@@ -4,21 +4,12 @@ import { toPng } from 'html-to-image';
 import download from "downloadjs";
 
 import Button from "../Button";
-import SoobwayCircleItem from "./SoobwayCircleItem";
 
 export default function Form(props) {
-  const [ customizeIcon, setCustomizeIcon ] = useState("new icon");
+  const [ newIcon, setNewIcon ] = useState("new icon");
   const [ circleColour, setCircleColour ] = useState("#FCB818");
   const [ circleIcon, setCircleIcon ] = useState(null);
   const [ iconInvert, setIconInvert ] = useState(1);
-
-  const state = props.state;
-  const setState = props.setState;
-  
-  function handleToggleCustomizeIcon(e) {
-    e.preventDefault();
-    customizeIcon === "new icon" ? setCustomizeIcon("back") : setCustomizeIcon("new icon");
-  }
 
   function handleInvertIcon(e) {
     e.preventDefault();
@@ -31,10 +22,10 @@ export default function Form(props) {
 
   function handlePreviewToggle(e) {
     e.preventDefault();
-    if (state.previewToggle === "square") {
-      setState(prev => ({ ...prev, previewToggle: "banner"}))
+    if (props.state.previewToggle === "square") {
+      props.setState(prev => ({ ...prev, previewToggle: "banner"}))
     } else {
-      setState(prev => ({ ...prev, previewToggle: "square"}))
+      props.setState(prev => ({ ...prev, previewToggle: "square"}))
     }
   }
 
@@ -47,69 +38,78 @@ export default function Form(props) {
     );
   }
 
+  function handleToggleCustomizeIcon(e) {
+    e.preventDefault();
+    newIcon === "new icon" ? setNewIcon("back") : setNewIcon("new icon");
+  }
+
+  function handleAddIcon(e) {
+    e.preventDefault();
+    const oldSoobwayCircles = props.state.soobwayCircles;
+    props.setState(prev => ({ ...prev, soobwayCircles: [...oldSoobwayCircles, {
+      iconInvert, circleColour, circleIcon
+    }] }));
+  }
+
   return (
     <form>
-        {customizeIcon === "new icon" && 
+        {newIcon === "new icon" && 
         <>
           <input 
             type="text"
-            onChange={e => setState(prev => ({ ...prev, title: e.target.value}))}
-            value={state.title}
+            onChange={e => props.setState(prev => ({ ...prev, title: e.target.value}))}
+            value={props.state.title}
             placeholder="title"
             autoComplete="off"
           />
           <input 
             type="text"
-            onChange={e => setState(prev => ({ ...prev, subtitle: e.target.value}))}
-            value={state.subtitle}
+            onChange={e => props.setState(prev => ({ ...prev, subtitle: e.target.value}))}
+            value={props.state.subtitle}
             placeholder="subtitle"
             autoComplete="off"
           />
+          {props.id === "soobway" &&
+            <input 
+              type="text"
+              onChange={e => props.setState(prev => ({ ...prev, blurb: e.target.value}))}
+              value={props.state.blurb}
+              placeholder="blurb"
+              autoComplete="off"
+            />
+          }
           <input 
             type="number"
-            onChange={e => setState(prev => ({ ...prev, fontAdjust: e.target.value}))}
-            value={state.fontAdjust}
+            onChange={e => props.setState(prev => ({ ...prev, fontAdjust: e.target.value}))}
+            value={props.state.fontAdjust}
             placeholder="font size"
             autoComplete="off"
           />
         </>
         }
         {props.id === "chocky" &&
-          <>
-            <div>
-              <input 
-                type="number"
-                onChange={e => setState(prev => ({ ...prev, xPosition: e.target.value}))}
-                value={state.xPosition}
-                placeholder="title x-position"
-                autoComplete="off"
-              />
-              <input 
-                type="number"
-                onChange={e => setState(prev => ({ ...prev, yPosition: e.target.value}))}
-                value={state.yPosition}
-                placeholder="title y-position"
-                autoComplete="off"
-              />
-            </div>
-            <input 
-              type="number"
-              onChange={e => setState(prev => ({ ...prev, curveAdjust: e.target.value}))}
-              value={state.curveAdjust}
-              placeholder="curve offset"
-              autoComplete="off"
-            />
-          </>
+          <input 
+            type="number"
+            onChange={e => props.setState(prev => ({ ...prev, curveAdjust: e.target.value}))}
+            value={props.state.curveAdjust}
+            placeholder="curve offset"
+            autoComplete="off"
+          />
         }
-        {(props.id === "soobway" && customizeIcon === "back") &&
+        {(props.id === "soobway" && newIcon === "back") &&
           <>
             <Button text="invert icon colour" onClick={handleInvertIcon}/>
             <div className="circle-upload">
-              <SoobwayCircleItem
-                circleColour={circleColour}
-                circleIcon={circleIcon}
-                iconInvert={iconInvert}
-              />
+              <div
+                className="circle-preview"
+                style={{backgroundColor: `${circleColour}`}}
+              >
+                <img
+                  src={circleIcon}
+                  alt=""
+                  style={{filter: `invert(${iconInvert})`}}
+                />
+              </div>
               <label>
                 <input
                   className="upload-icon"
@@ -131,9 +131,9 @@ export default function Form(props) {
           </>
         }
         <div>
-          {customizeIcon === "new icon" && <div>
+          {newIcon === "new icon" && <div>
             <Button
-              text={`toggle to ${state.previewToggle}`}
+              text={`toggle to ${props.state.previewToggle}`}
               onClick={handlePreviewToggle}
             />
             <Button
@@ -144,13 +144,14 @@ export default function Form(props) {
           <div>
             {props.id === "soobway" &&
               <Button 
-                text={customizeIcon}
+                text={newIcon}
                 onClick={handleToggleCustomizeIcon}
               />
             }
-            {(props.id === "soobway" && customizeIcon === "back") &&
+            {(props.id === "soobway" && newIcon === "back") &&
               <Button 
                 text="add icon"
+                onClick={handleAddIcon}
               />
             }
           </div>

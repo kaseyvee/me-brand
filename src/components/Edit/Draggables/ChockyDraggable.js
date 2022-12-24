@@ -13,11 +13,9 @@ export default function ChockyDraggable(props) {
           title={props.title}
           fontAdjust={props.fontAdjust}
           curveAdjust={props.curveAdjust}
-          xPosition={props.xPosition}
-          yPosition={props.yPosition}
           />
         <Draggable
-          defaultPosition={{x: 0, y: -25}}
+          defaultPosition={{x: 0, y: -17}}
           bounds="parent" 
           axis="y"
         >

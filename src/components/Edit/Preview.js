@@ -2,22 +2,25 @@ import NamelessDraggable from "./Draggables/NamelessDraggable";
 import ChockyDraggable from "./Draggables/ChockyDraggable";
 import SoobwayDraggable from "./Draggables/SoobwayDraggable";
 import Button from "../Button";
-import SoobwayCircleItem from "./SoobwayCircleItem";
+import SoobwayCircleItem from "./Draggables/SoobwayCircleItem";
+import SoobwayBlurb from "./Draggables/SoobwayBlurb";
 
 export default function Preview(props) {
 
   const circles = props.state.soobwayCircles.map(soobwayCircle => {
     return (
       <SoobwayCircleItem
+        key={props.state.soobwayCircles.indexOf(soobwayCircle)}
         circleColour={soobwayCircle.circleColour}
         circleIcon={soobwayCircle.circleIcon}
         iconInvert={soobwayCircle.iconInvert}
+        fontAdjust={props.state.fontAdjust}
       />
     )
   })
 
   function reset() {
-    props.setState(prev => ({ ...prev, fontAdjust: "", curveAdjust: "", xPosition: "", yPosition: ""}));
+    window.location.reload();
   }
 
   return (
@@ -36,8 +39,6 @@ export default function Preview(props) {
             subtitle={props.state.subtitle}
             fontAdjust={props.state.fontAdjust}
             curveAdjust={props.state.curveAdjust}
-            xPosition={props.state.xPosition}
-            yPosition={props.state.yPosition}
           />
         }
         {props.id === "soobway" &&
@@ -48,6 +49,10 @@ export default function Preview(props) {
             subtitle={props.state.subtitle}
           />
           {circles}
+          <SoobwayBlurb
+            blurb={props.state.blurb}
+            fontAdjust={props.state.fontAdjust}
+          />
         </>
         }
       </div>
