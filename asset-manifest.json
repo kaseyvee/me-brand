@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/me-brand/static/css/main.7e11eebc.css",
-    "main.js": "/me-brand/static/js/main.ee1c5239.js",
+    "main.css": "/me-brand/static/css/main.edec405e.css",
+    "main.js": "/me-brand/static/js/main.1529f248.js",
     "static/media/Sticks.svg": "/me-brand/static/media/Sticks.722e11f5ccfaf4cd90e7.svg",
     "index.html": "/me-brand/index.html",
     "static/media/BG.svg": "/me-brand/static/media/BG.85c160bcb4ed5334cd8a.svg"
   },
   "entrypoints": [
-    "static/css/main.7e11eebc.css",
-    "static/js/main.ee1c5239.js"
+    "static/css/main.edec405e.css",
+    "static/js/main.1529f248.js"
   ]
 }
