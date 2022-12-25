@@ -7,10 +7,16 @@ import "./Edit.scss";
 import Form from "./Form";
 import Preview from "./Preview";
 
-import { getTemplate, getTemplateAttr } from "../../helpers/selectors";
 import templates from "../../database";
 
 export default function Edit() {
+  function getTemplate(templates, match) {
+    return templates.find(template => template.name === match)
+  }
+  function getTemplateAttr(template, attr) {
+    return template[attr];
+  }
+
   const { id } = useParams();
   const currentTemplate = getTemplate(templates, id);
 

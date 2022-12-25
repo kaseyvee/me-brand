@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { CirclePicker } from "react-color";
 import { toPng } from 'html-to-image';
 import download from "downloadjs";
 
 import Button from "../Button";
+import SoobwayIconForm from "./SoobwayIconForm";
+import MainForm from "./MainForm";
 
 export default function Form(props) {
   const [ newIcon, setNewIcon ] = useState("new icon");
@@ -63,95 +64,40 @@ export default function Form(props) {
 
   return (
     <form>
-        {newIcon === "new icon" && 
-        <>
-          <input 
-            type="text"
-            onChange={e => props.setState(prev => ({ ...prev, title: e.target.value}))}
-            value={props.state.title}
-            placeholder="title"
-            autoComplete="off"
-          />
-          <input 
-            type="text"
-            onChange={e => props.setState(prev => ({ ...prev, subtitle: e.target.value}))}
-            value={props.state.subtitle}
-            placeholder="subtitle"
-            autoComplete="off"
-          />
-          {props.id === "soobway" &&
-            <input 
-              type="text"
-              onChange={e => props.setState(prev => ({ ...prev, blurb: e.target.value}))}
-              value={props.state.blurb}
-              placeholder="blurb"
-              autoComplete="off"
-            />
-          }
-          <input 
-            type="number"
-            onChange={e => props.setState(prev => ({ ...prev, fontAdjust: e.target.value}))}
-            value={props.state.fontAdjust}
-            placeholder="font size"
-            autoComplete="off"
-          />
-        </>
-        }
-        {props.id === "chocky" &&
-          <input 
-            type="number"
-            onChange={e => props.setState(prev => ({ ...prev, curveAdjust: e.target.value}))}
-            value={props.state.curveAdjust}
-            placeholder="curve offset"
-            autoComplete="off"
+        {newIcon === "new icon" &&
+          <MainForm
+            id={props.id}
+            newIcon={newIcon}
+            state={props.state}
+            setState={props.setState}
           />
         }
         {(props.id === "soobway" && newIcon === "back") &&
-          <>
-            <Button text="invert icon colour" onClick={handleInvertIcon}/>
-            <Button text={`${iconSize} icon`} onClick={handleResizeIcon}/>
-            <div className="circle-upload">
-              <div
-                className="circle-preview"
-                style={{backgroundColor: `${circleColour}`, width: `${props.defaultFontSize(iconSize, 56, 36)}px`, height: `${props.defaultFontSize(iconSize, 56, 36)}px`}}
-              >
-                <img
-                  src={circleIcon}
-                  alt=""
-                  style={{filter: `invert(${iconInvert})`}}
-                />
-              </div>
-              <label>
-                <input
-                  className="upload-icon"
-                  type="file"
-                  onChange={(e) => {
-                    if (e.target.files.length !== 0) {
-                      e.preventDefault();
-                      setCircleIcon(URL.createObjectURL(e.target.files[0]));
-                    }
-                  }}
-                />
-                upload icon
-              </label>
-            </div>
-            <CirclePicker
-              colors={["#EF3B46", "#A77D35", "#F78427", "#FCB818", "#9FC438", "#1BB359", "#1379C1", "#04ADDA", "#D75BA1", "#9C9D9F", "#3E3F41", "#FFFFFF"]}
-              onChange={colour => setCircleColour(colour.hex)}
-            />
-          </>
+          <SoobwayIconForm
+            handleInvertIcon={handleInvertIcon}
+            handleResizeIcon={handleResizeIcon}
+            iconInvert={iconInvert}
+            iconSize={iconSize}
+            circleColour={circleColour}
+            setCircleColour={setCircleColour}
+            circleIcon={circleIcon}
+            setCircleIcon={setCircleIcon}
+            defaultFontSize={props.defaultFontSize}
+          />
         }
         <div>
-          {newIcon === "new icon" && <div>
-            <Button
-              text={`toggle to ${props.state.previewToggle}`}
-              onClick={handlePreviewToggle}
-            />
-            <Button
-              text="download"
-              onClick={handleDownload}
-            />
-          </div>}
+          {newIcon === "new icon" &&
+            <div>
+              <Button
+                text={`toggle to ${props.state.previewToggle}`}
+                onClick={handlePreviewToggle}
+              />
+              <Button
+                text="download"
+                onClick={handleDownload}
+              />
+            </div>
+          }
           <div>
             {props.id === "soobway" &&
               <Button 
@@ -166,7 +112,6 @@ export default function Form(props) {
               />
             }
           </div>
-
         </div>
       </form>
   );
