@@ -27,6 +27,16 @@ export default function Preview(props) {
 
   return (
     <div className="Preview">
+      <div className="preview-description">
+        <div>
+          drag items around to your liking
+        </div>
+        {props.id === "soobway" &&
+          <div>
+            <a href="https://iconduck.com/">iconduck</a> has a lot of neat icons if you need any
+          </div>
+        }
+      </div>
       <div className={props.toggleClass} id="download-me">
         {props.id === "nameless" &&
           <NamelessDraggable

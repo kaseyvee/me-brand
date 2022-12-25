@@ -4,7 +4,7 @@ export default function SoobwayCircleDraggable(props) {
 
   return (
     <Draggable
-      defaultPosition={{x: 6, y: 62}}
+      defaultPosition={{x: 6, y: 61}}
       grid={[2, 2]}
       bounds="parent"
     >

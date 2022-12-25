@@ -51,7 +51,11 @@ export default function Form(props) {
 
   function handleToggleCustomizeIcon(e) {
     e.preventDefault();
-    newIcon === "new icon" ? setNewIcon("back") : setNewIcon("new icon");
+    if (newIcon === "new icon") {
+      setNewIcon("back");
+    } else {
+      setNewIcon("new icon");
+    }
   }
 
   function handleAddIcon(e) {
@@ -105,7 +109,7 @@ export default function Form(props) {
                 onClick={handleToggleCustomizeIcon}
               />
             }
-            {(props.id === "soobway" && newIcon === "back") &&
+            {newIcon === "back" &&
               <Button 
                 text="add icon"
                 onClick={handleAddIcon}

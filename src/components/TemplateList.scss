@@ -6,10 +6,16 @@
 
   a {
     transition-duration: 200ms;
+    color: $black;
 
     &:hover {
       text-decoration: underline;
       filter: brightness(50%);
     }
+  }
+
+  img {
+    height: 227px;
+    width: 227px;
   }
 }

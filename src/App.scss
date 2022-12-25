@@ -2,6 +2,7 @@
 
 .App {
   @include flex-column;
+  @include link;
   text-align: center;
   justify-content: space-between;
   align-content: center;
@@ -10,15 +11,6 @@
   .Footer {
     bottom: 0;
     margin: 1rem;
-
-    a {
-      color: $white;
-      font-weight: bold;
-
-      &:hover {
-        text-decoration: underline;
-      }
-    }
   }
 }
 

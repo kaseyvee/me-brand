@@ -61,6 +61,12 @@
   }
 
   .Preview {
+    @include flex-column;
+    align-items: center;
+    .preview-description {
+      margin: 1rem;
+    }
+
     .nameless {
       background-color: #FBE900;
       color: black;
