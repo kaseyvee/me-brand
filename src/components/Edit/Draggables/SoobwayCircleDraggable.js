@@ -1,7 +1,7 @@
 import Draggable from "react-draggable";
 
-export default function SoobwayCircleDraggable
-(props) {
+export default function SoobwayCircleDraggable(props) {
+
   return (
     <Draggable
       defaultPosition={{x: 6, y: 62}}
@@ -10,7 +10,7 @@ export default function SoobwayCircleDraggable
     >
       <div
         className="circle-preview circle-item drag-me"
-        style={{backgroundColor: `${props.circleColour}`, width: `${25 + Number(props.fontAdjust)}px`, height: `${25 + Number(props.fontAdjust)}px`, margin: `${1}px` }}
+        style={{backgroundColor: `${props.circleColour}`, width: `${props.defaultFontSize(props.iconSize, 25, 16) + Number(props.fontAdjust)}px`, height: `${props.defaultFontSize(props.iconSize, 25, 16) + Number(props.fontAdjust)}px`, margin: `${1}px` }}
         >
           <img
             src={props.circleIcon}

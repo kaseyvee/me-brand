@@ -10,6 +10,7 @@ export default function Form(props) {
   const [ circleColour, setCircleColour ] = useState("#FCB818");
   const [ circleIcon, setCircleIcon ] = useState(null);
   const [ iconInvert, setIconInvert ] = useState(1);
+  const [ iconSize, setIconSize ] = useState("big");
 
   function handleInvertIcon(e) {
     e.preventDefault();
@@ -17,6 +18,15 @@ export default function Form(props) {
       setIconInvert(0);
     } else {
       setIconInvert(1);
+    }
+  }
+
+  function handleResizeIcon(e) {
+    e.preventDefault();
+    if (iconSize === "big") {
+      setIconSize("small");
+    } else {
+      setIconSize("big");
     }
   }
 
@@ -47,7 +57,7 @@ export default function Form(props) {
     e.preventDefault();
     const oldSoobwayCircles = props.state.soobwayCircles;
     props.setState(prev => ({ ...prev, soobwayCircles: [...oldSoobwayCircles, {
-      iconInvert, circleColour, circleIcon
+      iconInvert, iconSize, circleColour, circleIcon
     }] }));
   }
 
@@ -99,10 +109,11 @@ export default function Form(props) {
         {(props.id === "soobway" && newIcon === "back") &&
           <>
             <Button text="invert icon colour" onClick={handleInvertIcon}/>
+            <Button text={`${iconSize} icon`} onClick={handleResizeIcon}/>
             <div className="circle-upload">
               <div
                 className="circle-preview"
-                style={{backgroundColor: `${circleColour}`}}
+                style={{backgroundColor: `${circleColour}`, width: `${props.defaultFontSize(iconSize, 56, 36)}px`, height: `${props.defaultFontSize(iconSize, 56, 36)}px`}}
               >
                 <img
                   src={circleIcon}
@@ -144,7 +155,7 @@ export default function Form(props) {
           <div>
             {props.id === "soobway" &&
               <Button 
-                text={newIcon}
+                text={`${newIcon}`}
                 onClick={handleToggleCustomizeIcon}
               />
             }

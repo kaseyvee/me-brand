@@ -21,7 +21,7 @@ export default function Edit() {
     blurb: getTemplateAttr(currentTemplate, "blurb"),
     fontAdjust: "",
     curveAdjust: "",
-    soobwayCircles: [{iconInvert: 1, circleColour: "#F78427", circleIcon: "https://i.imgur.com/I1day1B.png"}, {iconInvert: 1, circleColour: "#1BB359", circleIcon: "https://i.imgur.com/7P1zUza.png"}]
+    soobwayCircles: []
   })
   
   const toggleClass = classNames("image", `${id}`, {
@@ -29,16 +29,26 @@ export default function Edit() {
     "toggle-banner": state.previewToggle === "square"
   });
 
+  function defaultFontSize(iconSize, big, small) {
+    if (iconSize === "big") {
+      return big;
+    } else {
+      return small;
+    }
+  }
+
   return (
     <div className="Edit">
       <Form {...{
         id,
-        state, setState
+        state, setState,
+        defaultFontSize
       }}/>
       <Preview {...{
         id,
         toggleClass,
-        state, setState
+        state, setState,
+        defaultFontSize
       }}/>
     </div>
   );

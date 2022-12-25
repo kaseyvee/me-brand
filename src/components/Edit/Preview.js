@@ -14,7 +14,9 @@ export default function Preview(props) {
         circleColour={soobwayCircle.circleColour}
         circleIcon={soobwayCircle.circleIcon}
         iconInvert={soobwayCircle.iconInvert}
+        iconSize={soobwayCircle.iconSize}
         fontAdjust={props.state.fontAdjust}
+        defaultFontSize={props.defaultFontSize}
       />
     )
   })
@@ -43,14 +45,14 @@ export default function Preview(props) {
         }
         {props.id === "soobway" &&
         <>
+          <div className="circles">
+            {circles}
+          </div>
           <SoobwayDraggable
             fontAdjust={props.state.fontAdjust}
             title={props.state.title}
             subtitle={props.state.subtitle}
           />
-          <div className="circles">
-            {circles}
-          </div>
           <SoobwayBlurbDraggable
             blurb={props.state.blurb}
             fontAdjust={props.state.fontAdjust}
