@@ -1,9 +1,9 @@
 import Draggable from "react-draggable";
 
-export default function SoobwayBlurb(props) {
+export default function SoobwayBlurbDraggable(props) {
   return (
     <Draggable
-      defaultPosition={{x: -190, y: 60}}
+      defaultPosition={{x: 100, y: 35}}
       grid={[2, 2]}
       bounds="parent"
     >

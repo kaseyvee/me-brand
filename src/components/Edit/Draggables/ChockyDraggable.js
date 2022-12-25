@@ -1,5 +1,5 @@
 import Draggable from "react-draggable";
-import ChockyTitle from "../ChockyTitle";
+import ReactCurvedText from "react-curved-text";
 
 export default function ChockyDraggable(props) {
 
@@ -9,11 +9,23 @@ export default function ChockyDraggable(props) {
       bounds="parent"
     >
       <div className="drag-me chocky-text">
-        <ChockyTitle
-          title={props.title}
-          fontAdjust={props.fontAdjust}
-          curveAdjust={props.curveAdjust}
-          />
+        <Draggable>
+          <div>
+            <ReactCurvedText
+              width={200}
+              height={80}
+              cx={105}
+              cy={150}
+              rx={100}
+              ry={100}
+              startOffset={110 + Number(props.curveAdjust)}
+              reversed={true}
+              text={props.title}
+              textProps={{ style: { fontSize: 40 + Number(props.fontAdjust) } }}
+              textPathProps={{"fill": "white"}}
+            />
+          </div>
+        </Draggable>
         <Draggable
           defaultPosition={{x: 0, y: -17}}
           bounds="parent" 

@@ -1,9 +1,10 @@
 import Draggable from "react-draggable";
 
-export default function SoobwayCircleItem(props) {
+export default function SoobwayCircleDraggable
+(props) {
   return (
     <Draggable
-      defaultPosition={{x: -190, y: 60}}
+      defaultPosition={{x: 6, y: 62}}
       grid={[2, 2]}
       bounds="parent"
     >

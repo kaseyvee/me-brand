@@ -56,11 +56,6 @@
     input[type=file] {
       display: none;
     }
-
-    // .edit-buttons {
-    //   @include flex-row;
-    //   justify-content: space-between;
-    // }
   }
 
   .Preview {
@@ -110,12 +105,20 @@
     }
     
     .soobway {
-      @include flex-row;
       background-color: black;
       color: $white;
       font-family: Arial, Helvetica, sans-serif;
       text-align: left;
       background-image: url("../../../public/BG.svg");
+      word-break: keep-all;
+
+      .circles {
+        @include flex-row;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        transform: translateY(-46px);
+      }
 
       .circle-item {
         width: 25px;

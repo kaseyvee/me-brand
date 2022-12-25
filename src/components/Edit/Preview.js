@@ -2,14 +2,14 @@ import NamelessDraggable from "./Draggables/NamelessDraggable";
 import ChockyDraggable from "./Draggables/ChockyDraggable";
 import SoobwayDraggable from "./Draggables/SoobwayDraggable";
 import Button from "../Button";
-import SoobwayCircleItem from "./Draggables/SoobwayCircleItem";
-import SoobwayBlurb from "./Draggables/SoobwayBlurb";
+import SoobwayCircleDraggable from "./Draggables/SoobwayCircleDraggable";
+import SoobwayBlurbDraggable from "./Draggables/SoobwayBlurbDraggable";
 
 export default function Preview(props) {
 
   const circles = props.state.soobwayCircles.map(soobwayCircle => {
     return (
-      <SoobwayCircleItem
+      <SoobwayCircleDraggable
         key={props.state.soobwayCircles.indexOf(soobwayCircle)}
         circleColour={soobwayCircle.circleColour}
         circleIcon={soobwayCircle.circleIcon}
@@ -48,8 +48,10 @@ export default function Preview(props) {
             title={props.state.title}
             subtitle={props.state.subtitle}
           />
-          {circles}
-          <SoobwayBlurb
+          <div className="circles">
+            {circles}
+          </div>
+          <SoobwayBlurbDraggable
             blurb={props.state.blurb}
             fontAdjust={props.state.fontAdjust}
           />
