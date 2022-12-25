@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import classNames from "classnames";
 
@@ -22,13 +22,22 @@ export default function Edit() {
 
   const [ state, setState ] = useState({
     previewToggle: "square",
-    title: getTemplateAttr(currentTemplate, "title"),
-    subtitle: getTemplateAttr(currentTemplate, "subtitle"),
-    blurb: getTemplateAttr(currentTemplate, "blurb"),
+    title: "",
+    subtitle: "",
+    blurb: "",
     fontAdjust: "",
     curveAdjust: "",
     soobwayCircles: []
   })
+
+  useEffect(() => {
+    setState(prev => ({
+      ...prev,
+      title: getTemplateAttr(currentTemplate, "title"),
+      subtitle: getTemplateAttr(currentTemplate, "subtitle"),
+      blurb: getTemplateAttr(currentTemplate, "blurb")
+    }))
+  }, [])
   
   const toggleClass = classNames("image", `${id}`, {
     "toggle-square": state.previewToggle === "banner",
