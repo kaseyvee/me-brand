@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 
 import './App.scss';
 
@@ -21,7 +21,7 @@ export default function App() {
   }, [])
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       {loading ? <Loading /> :
       <div className="App">
         <Header />
@@ -32,6 +32,6 @@ export default function App() {
         <Footer />
       </div>
       }
-    </BrowserRouter>
+    </HashRouter>
   );
 }

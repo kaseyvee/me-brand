@@ -16,6 +16,4 @@ Users can customize text, font size, position with drag and drop, and toggle bet
 - bug when downloading while viewing on another monitor- image size is smaller
 
 ## View WIP
-1. Install dependencies: `npm i`
-2. Run client development server: `npm start`
-3. Visit: `http://localhost:3000/`
+https://kaseyvee.github.io/me-brand/
